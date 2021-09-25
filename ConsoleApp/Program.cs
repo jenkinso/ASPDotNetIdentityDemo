@@ -22,10 +22,16 @@ namespace ConsoleApp
             Console.WriteLine($"Creating a user was successful? {creationResult.Succeeded}. Error count: {creationResult.Errors.Count()}.");
             */
 
-            // Adding a Claim demo
+            /* // Adding a Claim demo
             var user = userManager.FindByName("demoUser");
             var claimResult = userManager.AddClaim(user.Id, new Claim("given_name", "Owen")); // You can add the same claim_type twice??
             Console.WriteLine($"Claim succeeded? {claimResult.Succeeded}.");
+            */
+
+            var user = userManager.FindByName("demoUser");
+            bool firstTestResult = userManager.CheckPassword(user, "Password123!");
+            bool secondTestResult = userManager.CheckPassword(user, "Password123");
+            Console.WriteLine($"First pwd check: {firstTestResult}. Second pwd check: {secondTestResult}.");
 
             Console.ReadLine();
         }
